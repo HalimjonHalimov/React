@@ -4,11 +4,7 @@ import { AuthContext } from "../../context/AuthProvider";
 
 const Navbar = () => {
   const { theme, toggleTheme } = useContext(ThemeContext);
-  const { auth, logout } = useContext(AuthContext);
-
-  useEffect(() => {
-    console.log(auth);
-  }, [auth]);
+  const { user, isAuthenticated, login, logout } = useContext(AuthContext);
 
   return (
     <div>
@@ -16,8 +12,21 @@ const Navbar = () => {
       {theme}
       <button onClick={toggleTheme}>Toggle Theme</button>
       <div>
-        Hello {auth === true ? "True" : "False"}
+        Hello {user === true ? "True" : "False"}
         <button onClick={logout}>Toggle Theme</button>
+      </div>
+      <div>
+        {isAuthenticated ? (
+          <>
+            <h2>Welcome, {user.name}</h2>
+            <button onClick={logout}>Log out</button>
+          </>
+        ) : (
+          <>
+            <p>Please log in</p>
+            <button onClick={() => login({ name: "Hamid" })}>Log in</button>
+          </>
+        )}
       </div>
     </div>
   );
