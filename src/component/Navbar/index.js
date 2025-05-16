@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import { ThemeContext } from "../../context/ThemeProvider";
 import { AuthContext } from "../../context/AuthProvider";
 
@@ -24,7 +24,7 @@ const Navbar = () => {
         ) : (
           <>
             <p>Please log in</p>
-            <button onClick={() => login({ name: "Hamid" })}>Log in</button>
+            <button onClick={() => login({ name: "Humid" })}>Log in</button>
           </>
         )}
       </div>
