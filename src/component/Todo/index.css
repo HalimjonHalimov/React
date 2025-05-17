@@ -1,0 +1,47 @@
+.todo {
+  width: 90%;
+  height: auto;
+  padding: 0;
+  margin: 1rem auto;
+  background: #ccc;
+  border-radius: 0.4rem;
+  border: 0.1rem solid #fff;
+}
+.todo-header {
+  font-family: sans-serif;
+  font-weight: 600;
+  font-size: 2rem;
+  text-transform: capitalize;
+  margin: 1rem auto;
+}
+.todo-body {
+    text-transform: capitalize;
+}
+.todo-item {
+}
+.todo-items {
+  width: 100%;
+  height: auto;
+  padding: 2px 4px;
+  border: 1px solid #000;
+  border-radius: 0.4rem;
+}
+.item {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  justify-content: center;
+  align-items: baseline;
+}
+.todo-items-btn {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    justify-content: flex-start;
+    align-items: baseline;
+}
+.todo-button {
+    padding: 4px 8px;
+    font-size: .8rem;
+    text-transform: capitalize;
+}

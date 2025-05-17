@@ -11,10 +11,7 @@ const Navbar = () => {
       Navbar
       {theme}
       <button onClick={toggleTheme}>Toggle Theme</button>
-      <div>
-        Hello {user === true ? "True" : "False"}
-        <button onClick={logout}>Toggle Theme</button>
-      </div>
+      <div>{user && `${user.name} Welcome to my chanel`}</div>
       <div>
         {isAuthenticated ? (
           <>
