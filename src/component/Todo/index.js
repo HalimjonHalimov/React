@@ -1,35 +1,41 @@
-import React from "react";
+import { useEffect, useState } from "react";
+import { authors } from "../../helper/author";
 
 import "./index.css";
+import Item from "./item";
 
 const Todo = () => {
+  const [author, setAuthor] = useState(authors);
+
+  const handlesubmit = (e) => {
+    e.preventDefault();
+
+  };
+  useEffect(() => {
+    // console.log(author);
+  }, [author]);
+
   return (
     <div className="todo">
       <div className="todo-header">Todo header</div>
       <div className="todo-body">
         <div className="todo-item">
-          <div className="todo-items">
-            <div className="item">
-              1
-              <input
-                type="text"
-                name="name"
-                className=""
-                placeholder="Name "
-                value={"Halimov"}
-                required
-                disabled
+          {author &&
+            author.map((item) => (
+              <Item
+                key={item.id}
+                {...item}
+                setAuthor={setAuthor}
+                author={author}
               />
-              <button className="todo-button">Liked</button>
-              <div className="todo-items-btn">
-                <button className="todo-button">edit</button>
-                <button className="todo-button">like</button>
-                <button className="todo-button">delete</button>
-              </div>
-            </div>
-          </div>
+            ))}
         </div>
-        <div className="todo-item">Todo ADD</div>
+        <div className="todo-add">
+          <form onSubmit={handlesubmit}>
+            <input type="text" name="add" placeholder="Enter Author name please!" />
+            <button type="submit"> Send</button>
+          </form>
+        </div>
       </div>
     </div>
   );

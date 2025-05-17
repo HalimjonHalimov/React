@@ -60,9 +60,7 @@ export function AuthProvider({ children }) {
     dispatch({ type: "LOGOUT" });
   };
 
-  useEffect(() => {
-    console.log(state);
-  }, [state]);
+  useEffect(() => {}, [state]);
 
   return (
     <AuthContext.Provider value={{ ...state, login, logout }}>
