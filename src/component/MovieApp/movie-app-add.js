@@ -8,6 +8,7 @@ const MovieAppAdd = () => {
         <label htmlFor="movie-name">
           <span> Movie Name:</span>
           <input
+            onChange={() => {}}
             type="text"
             name="movie-name"
             id="movie-name"

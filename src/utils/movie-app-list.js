@@ -17,7 +17,7 @@ export const MovieAppListItems = [
     id: 3,
     name: "Movie App 3",
     view: 10,
-    favourite: false,
+    favourite: true,
     like: false,
   },
   {

@@ -1,14 +1,13 @@
-import React from "react";
-import { MovieAppListItems } from "../../utils/movie-app-list";
+import React, { useContext } from "react";
 import MovieAppListItem from "./movie-app-list-item";
+import { MovieAppContext } from "../../context/MovieApp";
 
 const MovieAppList = () => {
+  const { movies } = useContext(MovieAppContext);
   return (
     <div className="movie-app-list-items">
-      {MovieAppListItems.length > 0 ? (
-        MovieAppListItems.map((item) => (
-          <MovieAppListItem key={item.id} {...item} />
-        ))
+      {movies.length > 0 ? (
+        movies.map((item) => <MovieAppListItem key={item.id} {...item} />)
       ) : (
         <div>No Movie Yet</div>
       )}

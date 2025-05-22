@@ -1,10 +1,13 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import { MovieAppContext } from "../../context/MovieApp";
 
 const MovieAppSearch = () => {
-  const [term, setTern] = useState("");
+  // const [term, setTern] = useState("");
+
+  const { term, setTerm } = useContext(MovieAppContext);
 
   const handleChange = (e) => {
-    setTern(e.target.value);
+    setTerm(e.target.value);
   };
   const handleSubmit = (e) => {
     e.preventDefault();

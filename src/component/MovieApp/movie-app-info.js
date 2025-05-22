@@ -1,15 +1,19 @@
-import React from "react";
-import './index.css'
+import React, { useContext } from "react";
+import "./index.css";
+import { MovieAppContext } from "../../context/MovieApp";
 
 const MovieAppInfo = () => {
-  return <div className="movie-app-info">
-    <h2>Movie App Info:</h2>
-    <div className="movie-app-info-item">
-      <div>All Movies: 12</div>
-      <div>Popular: 2</div>
-      <div>Liked: 4</div>
+  const { movies } = useContext(MovieAppContext);
+  return (
+    <div className="movie-app-info">
+      <h2>Movie App Info:</h2>
+      <div className="movie-app-info-item">
+        <div>All Movies: {movies.length}</div>
+        <div>Popular: {movies.filter((c) => c.favourite === true).length}</div>
+        <div>Liked: </div>
+      </div>
     </div>
-  </div>;
+  );
 };
 
 export default MovieAppInfo;
