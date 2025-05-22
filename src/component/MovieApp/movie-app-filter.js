@@ -1,30 +1,16 @@
-import React, { useState } from "react";
-
-const button = [
-  {
-    id: 1,
-    category: "All",
-    label: "All",
-  },
-  {
-    id: 2,
-    category: "Popular",
-    label: "Popular",
-  },
-  {
-    id: 3,
-    category: "Liked",
-    label: "Liked",
-  },
-];
+import React, { useState, useContext } from "react";
+import { MovieAppContext } from "../../context/MovieApp";
 
 const MovieAppFilter = () => {
   const [active, setActive] = useState(false);
+  const { onSortedHandle } = useContext(MovieAppContext);
+
   return (
     <div className="movie-app-filter-buttons">
       {button &&
         button.map((item) => (
           <button
+            onClick={() => onSortedHandle(item.category)}
             type="button"
             key={item.id}
             className={`${
@@ -41,3 +27,21 @@ const MovieAppFilter = () => {
 };
 
 export default MovieAppFilter;
+
+const button = [
+  {
+    id: 1,
+    category: "all",
+    label: "All",
+  },
+  {
+    id: 2,
+    category: "popular",
+    label: "Popular",
+  },
+  {
+    id: 3,
+    category: "like",
+    label: "Liked",
+  },
+];

@@ -24,7 +24,7 @@ export const MovieAppListItems = [
     id: 4,
     name: "Movie App 4",
     view: 9,
-    favourite: false,
+    favourite: true,
     like: false,
   },
   {
@@ -32,6 +32,6 @@ export const MovieAppListItems = [
     name: "Movie App 5",
     view: 8,
     favourite: false,
-    like: false,
+    like: true,
   },
 ];

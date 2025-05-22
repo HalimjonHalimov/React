@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import { useContext } from "react";
 import { MovieAppContext } from "../../context/MovieApp";
 
 const MovieAppSearch = () => {
@@ -11,7 +11,7 @@ const MovieAppSearch = () => {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(term);
+    console.log("Searching: ", term);
   };
 
   return (
