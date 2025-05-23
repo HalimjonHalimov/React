@@ -11,7 +11,7 @@ export function MovieAppProvider({ children }) {
 
   const onSortedHandle = (category) => {
     const sortedMovies = onSortHandle(MovieAppListItems, category);
-    console.log(sortedMovies);
+    setMovies(sortedMovies);
   };
 
   const filteredMovies = onTermHandle(MovieAppListItems, term);

@@ -4,7 +4,7 @@ export const onSortHandle = (arr, category) => {
       return arr;
     case "popular":
       return arr.filter((c) => c.favourite === true);
-    case "liked":
+    case "like":
       return arr.filter((c) => c.like === true);
 
     default:
