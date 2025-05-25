@@ -3,11 +3,11 @@ import MovieAppListItem from "./movie-app-list-item";
 import { MovieAppContext } from "../../context/MovieApp";
 
 const MovieAppList = () => {
-  const { movies } = useContext(MovieAppContext);
+  const { sortedMovies } = useContext(MovieAppContext);
   return (
     <div className="movie-app-list-items">
-      {movies.length > 0 ? (
-        movies.map((item) => <MovieAppListItem key={item.id} {...item} />)
+      {sortedMovies.length > 0 ? (
+        sortedMovies.map((item) => <MovieAppListItem key={item.id} {...item} />)
       ) : (
         <div>No Movie Yet</div>
       )}

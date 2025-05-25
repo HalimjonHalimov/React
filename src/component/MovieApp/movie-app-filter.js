@@ -1,25 +1,19 @@
-import React, { useState, useContext } from "react";
+import React, { useContext } from "react";
 import { MovieAppContext } from "../../context/MovieApp";
 
 const MovieAppFilter = () => {
-  const [active, setActive] = useState("all");
-  const { onSortedHandle } = useContext(MovieAppContext);
-
-  const handleClick = (category) => {
-    setActive(category);
-    onSortedHandle(category);
-  };
+  const { category, setCategory } = useContext(MovieAppContext);
 
   return (
     <div className="movie-app-filter-buttons">
       {button &&
         button.map((item) => (
           <button
-            onClick={() => handleClick(item.category)}
+            onClick={() => setCategory(item.category)}
             type="button"
             key={item.id}
             className={`movie-app-filter-button ${
-              active === item.category ? "active" : ""
+              category === item.category ? "active" : ""
             }`}
           >
             {item.label}

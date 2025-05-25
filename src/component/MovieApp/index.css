@@ -83,6 +83,7 @@
   border: 1px solid #000;
   border-radius: 0.8rem;
   transition: all ease-in-out 0.2s;
+  
 }
 .movie-app-filter-button:hover {
   background: #7000ff;
@@ -90,7 +91,7 @@
   cursor: pointer;
 }
 .movie-app-filter-button:active,
-.movie-app-filter-buttons .active {
+.movie-app-filter-button.active {
   background: #7000ff;
   color: #fff;
   opacity: 0.8;
