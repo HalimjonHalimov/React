@@ -2,6 +2,7 @@ import { createContext, useState } from "react";
 import { MovieAppListItems } from "../utils/movie-app-list";
 import { onTermHandle } from "../helper/term";
 import { onSortHandle } from "../helper/sort";
+import { onAddHandle } from "../helper/add";
 
 export const MovieAppContext = createContext();
 
@@ -9,6 +10,7 @@ export function MovieAppProvider({ children }) {
   const [movies, setMovies] = useState(MovieAppListItems || null);
   const [term, setTerm] = useState("");
   const [category, setCategory] = useState("all");
+  const [newMovie, setNewMovie] = useState({});
 
   // TODO --- Filter Movies ---
   // * ---  Search movies filter
@@ -32,6 +34,11 @@ export function MovieAppProvider({ children }) {
     setMovies(deletedMovie);
   };
 
+  // Todo ---  Add New Movie  ---
+
+  const updatedMovies = onAddHandle(sortedMovies, newMovie);
+  console.log(updatedMovies);
+
   return (
     <MovieAppContext.Provider
       value={{
@@ -43,6 +50,7 @@ export function MovieAppProvider({ children }) {
         onLikedHandle,
         onDeleteHandle,
         sortedMovies,
+        setNewMovie,
       }}
     >
       {children}
