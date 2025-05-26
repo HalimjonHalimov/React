@@ -4,8 +4,8 @@ import { MovieAppContext } from "../../context/MovieApp";
 const MovieAppAdd = () => {
   const { setNewMovie } = useContext(MovieAppContext);
   const [movieInfo, setMovieInfo] = useState({
-    movieName: "",
-    movieView: "",
+    name: "",
+    view: "",
   });
 
   const onChangeHandle = (e) => {
@@ -18,14 +18,14 @@ const MovieAppAdd = () => {
 
   const reset = () => {
     setMovieInfo({
-      movieName: "",
-      movieView: "",
+      name: "",
+      view: "",
     });
   };
 
   const submitHandle = (e) => {
     e.preventDefault();
-    if (movieInfo.movieName && movieInfo.movieView) {
+    if (movieInfo.name !== "" && movieInfo.view !== "") {
       setNewMovie(movieInfo);
       reset();
     }
@@ -40,18 +40,20 @@ const MovieAppAdd = () => {
           <input
             onChange={onChangeHandle}
             type="text"
-            name="movieName"
-            id="movieName"
+            name="name"
+            id="name"
             placeholder="Please add movie name"
-            value={movieInfo.movieName}
+            value={movieInfo.name}
+            required
           />
           <input
             onChange={onChangeHandle}
             type="number"
-            name="movieView"
-            id="movieView"
+            name="view"
+            id="view"
             placeholder="Please add movie view"
-            value={movieInfo.movieView}
+            value={movieInfo.view}
+            required
           />
         </label>
         <button type="submit" className="movie-app-filter-button">

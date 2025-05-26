@@ -1,5 +1,6 @@
 export const onAddHandle = (arr, movie) => {
-  if (movie) {
-    return [...arr, { ...movie, favorite: false, like: false }];
+  if (Object.keys(movie).length !== 0) {
+    return [...arr, { ...movie, id: 12, favorite: false, like: false }];
   }
+  return arr;
 };

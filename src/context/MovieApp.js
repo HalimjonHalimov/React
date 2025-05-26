@@ -19,6 +19,8 @@ export function MovieAppProvider({ children }) {
   // * ---  Sort with button 'all', 'popular', 'liked'  ---
   const sortedMovies = onSortHandle(filteredMovies, category);
 
+  const updatedMovies = onAddHandle(sortedMovies, newMovie);
+
   // TODO Handle Function
   // * --- Like handle function ---
   const onLikedHandle = (id) => {
@@ -36,8 +38,7 @@ export function MovieAppProvider({ children }) {
 
   // Todo ---  Add New Movie  ---
 
-  const updatedMovies = onAddHandle(sortedMovies, newMovie);
-  console.log(updatedMovies);
+
 
   return (
     <MovieAppContext.Provider
@@ -51,6 +52,7 @@ export function MovieAppProvider({ children }) {
         onDeleteHandle,
         sortedMovies,
         setNewMovie,
+        updatedMovies,
       }}
     >
       {children}
