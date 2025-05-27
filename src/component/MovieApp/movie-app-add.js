@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import { MovieAppContext } from "../../context/MovieApp";
 
 const MovieAppAdd = () => {
-  const { setNewMovie } = useContext(MovieAppContext);
+  const { onAddHandle } = useContext(MovieAppContext);
   const [movieInfo, setMovieInfo] = useState({
     name: "",
     view: "",
@@ -26,10 +26,7 @@ const MovieAppAdd = () => {
   const submitHandle = (e) => {
     e.preventDefault();
     if (movieInfo.name !== "" && movieInfo.view !== "") {
-      const updatedMovie = {...movieInfo, id: 12, favorite: false, like: false}
-      console.log(updatedMovie);
-      
-      setNewMovie(prev => ([...prev, movieInfo]));
+      onAddHandle(movieInfo.name, movieInfo.view);
       reset();
     }
   };

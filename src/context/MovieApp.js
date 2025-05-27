@@ -1,8 +1,7 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useState } from "react";
 import { MovieAppListItems } from "../utils/movie-app-list";
 import { onTermHandle } from "../helper/term";
 import { onSortHandle } from "../helper/sort";
-import { onAddHandle } from "../helper/add";
 
 export const MovieAppContext = createContext();
 
@@ -10,7 +9,6 @@ export function MovieAppProvider({ children }) {
   const [movies, setMovies] = useState(MovieAppListItems || null);
   const [term, setTerm] = useState("");
   const [category, setCategory] = useState("all");
-  const [newMovie, setNewMovie] = useState([]);
 
   // TODO --- Filter Movies ---
   // * ---  Search movies filter
@@ -19,7 +17,17 @@ export function MovieAppProvider({ children }) {
   // * ---  Sort with button 'all', 'popular', 'liked'  ---
   const sortedMovies = onSortHandle(filteredMovies, category);
 
-  const updatedMovies = onAddHandle(sortedMovies, newMovie);
+  // * ---  Add New Movie ---
+  const onAddHandle = (name, view) => {
+    const updatedMovie = {
+      id: view,
+      name,
+      view,
+      favorite: false,
+      like: false,
+    };
+    setMovies((prev) => [...prev, updatedMovie]);
+  };
 
   // TODO Handle Function
   // * --- Like handle function ---
@@ -38,10 +46,6 @@ export function MovieAppProvider({ children }) {
 
   // Todo ---  Add New Movie  ---
 
-  useEffect(() => {
-    console.log(newMovie);
-  }, [newMovie]);
-
   return (
     <MovieAppContext.Provider
       value={{
@@ -53,8 +57,7 @@ export function MovieAppProvider({ children }) {
         onLikedHandle,
         onDeleteHandle,
         sortedMovies,
-        setNewMovie,
-        updatedMovies,
+        onAddHandle,
       }}
     >
       {children}
