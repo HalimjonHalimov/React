@@ -26,7 +26,10 @@ const MovieAppAdd = () => {
   const submitHandle = (e) => {
     e.preventDefault();
     if (movieInfo.name !== "" && movieInfo.view !== "") {
-      setNewMovie(movieInfo);
+      const updatedMovie = {...movieInfo, id: 12, favorite: false, like: false}
+      console.log(updatedMovie);
+      
+      setNewMovie(prev => ([...prev, movieInfo]));
       reset();
     }
   };

@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import { MovieAppListItems } from "../utils/movie-app-list";
 import { onTermHandle } from "../helper/term";
 import { onSortHandle } from "../helper/sort";
@@ -10,7 +10,7 @@ export function MovieAppProvider({ children }) {
   const [movies, setMovies] = useState(MovieAppListItems || null);
   const [term, setTerm] = useState("");
   const [category, setCategory] = useState("all");
-  const [newMovie, setNewMovie] = useState({});
+  const [newMovie, setNewMovie] = useState([]);
 
   // TODO --- Filter Movies ---
   // * ---  Search movies filter
@@ -38,7 +38,9 @@ export function MovieAppProvider({ children }) {
 
   // Todo ---  Add New Movie  ---
 
-
+  useEffect(() => {
+    console.log(newMovie);
+  }, [newMovie]);
 
   return (
     <MovieAppContext.Provider
