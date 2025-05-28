@@ -18,8 +18,12 @@ const reducer = (state, action) => {
     case "ON_DELETE":
       return { ...state, movies: state.movies.filter((c) => c.id !== payload) };
     case "ON_TOGGLE":
-      const { id, propd } = payload;
-
+      const { id, props } = payload;
+      const newArr = state.movies.map((c) =>
+        c.id === id ? { ...c, [props]: !c[props] } : c
+      );
+      return { ...state, movies: newArr };
+    case "ON_FILTER":
       return state;
     default:
       return state;
@@ -37,6 +41,7 @@ export function MovieAppProvider({ children }) {
   // TODO --- REDUCER ----
 
   const [state, dispatch] = useReducer(reducer, initialState);
+  console.log(state);
 
   // TODO --- REDUCER ----
 
