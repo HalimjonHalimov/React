@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import MovieAppInfo from "./movie-app-info";
 import MovieAppSearch from "./movie-app-search";
 import MovieAppFilter from "./movie-app-filter";
@@ -6,8 +6,15 @@ import MovieAppList from "./movie-app-list";
 import MovieAppAdd from "./movie-app-add";
 
 import "./index.css";
+import { MovieAppContext } from "../../context/MovieApp";
 
 const MovieApp = () => {
+  const { state, dispatch } = useContext(MovieAppContext);
+
+  useEffect(() => {
+    dispatch({type: 'GET_MOVIES', payload: 12})
+  }, [])
+  
   return (
     <div className="movie-app">
       <div className="movie-app-container">

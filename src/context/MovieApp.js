@@ -1,7 +1,27 @@
-import { createContext, useState } from "react";
+import { createContext, useReducer, useState } from "react";
 import { MovieAppListItems } from "../utils/movie-app-list";
 import { onTermHandle } from "../helper/term";
 import { onSortHandle } from "../helper/sort";
+
+const initialState = {
+  movies: [],
+  term: "",
+  category: "all",
+};
+
+const reducer = (state, action) => {
+  const { type, payload } = action;
+  switch (type) {
+    case "GET_MOVIES":
+      console.log(state);
+      console.log(payload);
+
+      return { ...state, movies: MovieAppListItems || null };
+
+    default:
+      return;
+  }
+};
 
 export const MovieAppContext = createContext();
 
@@ -9,6 +29,12 @@ export function MovieAppProvider({ children }) {
   const [movies, setMovies] = useState(MovieAppListItems || null);
   const [term, setTerm] = useState("");
   const [category, setCategory] = useState("all");
+
+  // TODO --- REDUCER ----
+
+  const [state, dispatch] = useReducer(reducer, initialState);
+
+  // TODO --- REDUCER ----
 
   // TODO --- Filter Movies ---
   // * ---  Search movies filter
@@ -58,6 +84,8 @@ export function MovieAppProvider({ children }) {
         onDeleteHandle,
         sortedMovies,
         onAddHandle,
+        state,
+        dispatch,
       }}
     >
       {children}
