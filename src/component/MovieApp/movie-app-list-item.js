@@ -2,7 +2,8 @@ import React, { useContext } from "react";
 import { MovieAppContext } from "../../context/MovieApp";
 
 const MovieAppListItem = ({ id, name, view, like }) => {
-  const { onLikedHandle, onDeleteHandle } = useContext(MovieAppContext);
+  const { onLikedHandle, onDeleteHandle, dispatch, state } =
+    useContext(MovieAppContext);
   return (
     <div className="movie-app-list-item">
       <div className="start">
@@ -20,7 +21,10 @@ const MovieAppListItem = ({ id, name, view, like }) => {
             Like
           </button>
           <button
-            onClick={() => onDeleteHandle(id)}
+            onClick={() => {
+              onDeleteHandle(id);
+              dispatch({ type: "ON_DELETE", payload: id });
+            }}
             type="button"
             className="movie-app-filter-button"
           >

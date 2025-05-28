@@ -8,21 +8,25 @@ const initialState = {
   term: "",
   category: "all",
 };
+// TODO   --- REDUCER FUNCTION  ---
 
 const reducer = (state, action) => {
   const { type, payload } = action;
   switch (type) {
     case "GET_MOVIES":
-      console.log(state);
-      console.log(payload);
-
       return { ...state, movies: MovieAppListItems || null };
+    case "ON_DELETE":
+      return { ...state, movies: state.movies.filter((c) => c.id !== payload) };
+    case "ON_TOGGLE":
+      const { id, propd } = payload;
 
+      return state;
     default:
-      return;
+      return state;
   }
 };
 
+// TODO   --- CREATE CONTEXT ---
 export const MovieAppContext = createContext();
 
 export function MovieAppProvider({ children }) {
