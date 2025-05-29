@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import { MovieAppContext } from "../../context/MovieApp";
 
 const MovieAppAdd = () => {
-  const { onAddHandle } = useContext(MovieAppContext);
+  const { dispatch } = useContext(MovieAppContext);
   const [movieInfo, setMovieInfo] = useState({
     name: "",
     view: "",
@@ -26,7 +26,9 @@ const MovieAppAdd = () => {
   const submitHandle = (e) => {
     e.preventDefault();
     if (movieInfo.name !== "" && movieInfo.view !== "") {
-      onAddHandle(movieInfo.name, movieInfo.view);
+      const newMovie = { name: movieInfo.name, view: movieInfo.view };
+      dispatch({ type: "ON_ADD_FORM", payload: newMovie });
+      // onAddHandle(movieInfo.name, movieInfo.view);
       reset();
     }
   };

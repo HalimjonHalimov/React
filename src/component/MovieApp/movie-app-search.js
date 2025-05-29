@@ -2,16 +2,14 @@ import { useContext } from "react";
 import { MovieAppContext } from "../../context/MovieApp";
 
 const MovieAppSearch = () => {
-  // const [term, setTern] = useState("");
-
-  const { term, setTerm } = useContext(MovieAppContext);
-
+  const { state, dispatch } = useContext(MovieAppContext);
+  const { term } = state;
+  
   const handleChange = (e) => {
-    setTerm(e.target.value);
+    dispatch({ type: "ON_TERM", payload: e.target.value });
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Searching: ", term);
   };
 
   return (

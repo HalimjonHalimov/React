@@ -9,12 +9,12 @@ import "./index.css";
 import { MovieAppContext } from "../../context/MovieApp";
 
 const MovieApp = () => {
-  const { state, dispatch } = useContext(MovieAppContext);
+  const { dispatch } = useContext(MovieAppContext);
 
   useEffect(() => {
-    dispatch({type: 'GET_MOVIES', payload: 12})
-  }, [])
-  
+    dispatch({ type: "GET_MOVIES" });
+  }, [dispatch]);
+
   return (
     <div className="movie-app">
       <div className="movie-app-container">

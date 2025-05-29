@@ -1,16 +1,15 @@
 import React, { useContext } from "react";
 import { MovieAppContext } from "../../context/MovieApp";
 
-const MovieAppListItem = ({ id, name, view, like,favorite }) => {
-  const { onLikedHandle, onDeleteHandle, dispatch } =
-    useContext(MovieAppContext);
+const MovieAppListItem = ({ id, name, view, like, favorite }) => {
+  const { dispatch } = useContext(MovieAppContext);
 
   const onHandleToggle = (e) => {
     const payload = {
       id,
-      props: e.currentTarget.getAttribute('data-toggle')
-    }
-    dispatch({type: 'ON_TOGGLE', payload})
+      props: e.currentTarget.getAttribute("data-toggle"),
+    };
+    dispatch({ type: "ON_TOGGLE", payload });
   };
 
   return (
@@ -23,10 +22,7 @@ const MovieAppListItem = ({ id, name, view, like,favorite }) => {
         <div>{view}</div>
         <div className="buttons">
           <button
-            onClick={(e) => {
-              onLikedHandle(id);
-              onHandleToggle(e);
-            }}
+            onClick={onHandleToggle}
             type="button"
             className={`movie-app-filter-button ${like && "active"}`}
             data-toggle="like"
@@ -43,7 +39,6 @@ const MovieAppListItem = ({ id, name, view, like,favorite }) => {
           </button>
           <button
             onClick={() => {
-              onDeleteHandle(id);
               dispatch({ type: "ON_DELETE", payload: id });
             }}
             type="button"
